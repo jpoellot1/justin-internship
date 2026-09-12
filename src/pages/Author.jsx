@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
 import { useParams } from "react-router-dom";
@@ -12,17 +12,17 @@ const Author = () => {
   const { authorId } = useParams()
   
 
-  async function fetchAuthorApi() {
+  const fetchAuthorApi = useCallback(async () => {
     setLoading(true)
     const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`)
     setAuthor(data)
     setLoading(false)
-  }
+  }, [authorId])
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchAuthorApi()
-  },[])
+  }, [fetchAuthorApi])
 
 
   return (

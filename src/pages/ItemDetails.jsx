@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -9,17 +9,17 @@ const ItemDetails = () => {
   const [loading, setLoading] = useState(true)
   const { nftId }= useParams()
 
-  async function fetchItemsApi() {
+  const fetchItemsApi = useCallback(async () => {
     setLoading(true)
     const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`)
     setItem(data)
     setLoading(false)
-  }
+  }, [nftId])
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchItemsApi()
-  }, []);
+  }, [fetchItemsApi]);
 
   return (
     <div id="wrapper">
