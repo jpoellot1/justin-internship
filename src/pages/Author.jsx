@@ -10,6 +10,10 @@ const Author = () => {
   const [author, setAuthor] = useState([])
   const [loading, setLoading] = useState(true)
   const { authorId } = useParams()
+
+  const copyAddress = async () => {
+    await navigator.clipboard.writeText(author.address)
+  }
   
 
   const fetchAuthorApi = useCallback(async () => {
@@ -76,7 +80,7 @@ const Author = () => {
                             <span id="wallet" className="profile_wallet">
                               {author.address}
                             </span>
-                            <button id="btn_copy" title="Copy Text">
+                            <button id="btn_copy" title="Copy Text" onClick={copyAddress}>
                               Copy
                             </button>
                           </h4>
