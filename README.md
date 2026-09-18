@@ -13,8 +13,8 @@ Ultraverse is an NFT Marketplace.
 *OwlCarousel
 
 <h2 align="center">Main Features</h2>
-*Carousel for the collections on the home page
-*Dedicated pages for each NFT and each author/creator
+*Carousel for the collections on the home page<br/>
+*Dedicated pages for each NFT and each author/creator<br/>
 *Animate on Scroll to make the page flow smoothly
 
 <h2 align="center">My Conributions</h2>
